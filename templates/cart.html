@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %} 
+<html lang="en">
+  <head>
+    <title> Cart</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"href="main.css">
+    <link rel="stylesheet"href="cart/cart.css">
+
+        
+
+    <script src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body style="background-color:white">
+    <!--Cart Section-->
+    <br><br><br><br><br><br><br>
+    <section class="mt-5">
+        <div class="container">
+            <div class="cart">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+{% for i in ci %}                        
+                        <tr>
+                            <th scope="col"class="text-white">Product</th>
+                            <th scope="col"class="text-white">Price</th>
+                            <th scope="col"class="text-white">Quantity</th>
+                            <th scope="col"class="text-white">Total</th>
+                            <th scope="col"class="text-white">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="main">
+                                    <div class="d-flex">
+                     <!--W=145 H=98--><a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}"alt="" width="145" height="98"></a>
+                                    </div>
+                                    <div class="des">
+                                        <p>{{i.prodt.name}}</p>
+                                        <span>ID: {{i.prodt.id}}</span>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h6>{{i.prodt.price}}</h6>
+                            </td>
+                            <td>
+                                <div class="counter">
+                                    {% if i.quan > 1 %}
+                                    <a href="{% url 'cart_decrement' i.prodt.id %}"><i class="fas fa-angle-down"></i></a>
+                                    {% endif %}
+                                   <input class="input-number"type="text"
+                                    value="{{i.quan}}"min="0"max="10">
+                                    <a href="{% url 'add_cart' i.prodt.id %}"><i class="fas fa-angle-up"></i></a>
+                                </div>
+                            </td>
+                            <td>
+                                <h6>{{i.total}}Rs</h6>
+                            </td>
+                            <td>
+                                <a href="{% url 'remove' i.prodt.id %}"><h6><i class="fa fa-trash-o" style="font-size:14px"></i></h6></a>
+                            </td>
+    {% endfor %}                        
+                        </tr>
+                       
+                        <!----->
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </section>
+    <div class="col-lg-4 offset-lg-4">
+        <div class="checkout">
+            <ul>
+                <li class="subtotal" style="color: white; background-color: black;">subtotal
+                    <span>$60.00</span>
+                </li>
+                <li class="cart-total" style="color: white; background-color: red;">Total
+                <span>{{t}}Rs</span></li>
+            </ul>
+            <a href="#"class="proceed-btn">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+{% endblock %}

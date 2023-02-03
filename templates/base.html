@@ -1,0 +1,201 @@
+{% load static %}
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <title>My Shop</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300,700' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,600" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'hm/style.css' %}" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/{% static 'hm/css/all.css' %}"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css" />
+
+
+
+
+
+  <!-- Font Google -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="cart/cart.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    .wrapper {
+      width: 1170px;
+      margin: 0 auto;
+    }
+
+    header {
+      height: 100px;
+      background: #262626;
+      width: 100%;
+      z-index: 12;
+      position: fixed;
+    }
+
+    .logo {
+      width: 30%;
+      float: left;
+      line-height: 100px;
+
+    }
+
+    .logo a {
+      text-decoration: none;
+      font-size: 30px;
+      font-family: bignoodletitling;
+      color: #fff;
+      letter-spacing: 5px;
+    }
+
+    nav {
+      float: right;
+      line-height: 100px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-family: bignoodletitling;
+      letter-spacing: 4px;
+      font-size: 20px;
+      margin: 0 10px;
+      color: #fff;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 0px;
+      box-shadow: 0px 8px 16px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 0px 0px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <header>
+    <div class="wrapper">
+      <div class="logo">
+        <a href="/">My Shop</a>
+      </div>
+      <nav>
+
+        <a href="/">Home</a>
+        <!-- <li class="nav-item"> <a class="nav-link" href="{% url 'cart_details' %}"><i class="fa fa-shopping-cart" style="font-size:14px; color: red;"></i>&nbsp;{{itc}}</a> </li> -->
+        <a href="{% url 'cart_details' %}"><i class="fa fa-shopping-cart"
+            style="font-size:14px; color: red;"></i>&nbsp;{{itc}}</a>
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'loginuser' %}">Login</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <div class="dropdown">
+          <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4"
+              style="color: white; background-color: red">Filter</a> </li>
+          <div class="dropdown-content">
+            <a href="/">ALL</a>
+            {% for i in ct %}
+            <a href={{i.get_url}}>{{i.name}}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+  <!-- Navbar -->
+  <!-- <nav class="navbar navbar-expand-lg">
+  <div class="container"> <a class="navbar-brand navbar-logo" href="/"> <img src="{% static 'hm/images/logo-white.png' %}" alt="logo" class="logo-1"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"> <a class="nav-link" href="/" data-scroll-nav="0">Home</a> </li>
+        -->
+
+  <!--add to cart-->
+  <!-- <li class="nav-item"> <a class="nav-link" href="{% url 'cart_details' %}"><i class="fa fa-shopping-cart" style="font-size:14px; color: red;"></i>&nbsp;{{itc}}</a> </li> -->
+  <!---->
+  <!-- <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="2">Register</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="3">Login</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4">Log out</a> </li>
+        
+        <div class="dropdown">
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4" style="color: white; background-color: red">Filter</a> </li>  -->
+
+  <!-- <button class="dropbtn">FILTER</button> -->
+  <!-- <div class="dropdown-content">
+          <a href="/">ALL</a>
+          {% for i in ct %}
+          <a href={{i.get_url}}>{{i.name}}</a>
+          {% endfor %}
+          </div>
+        </div>
+       
+      </ul>
+    </div>  -->
+
+  <!-- <form action="{% url 'search' %}" method="GET">
+      <input type="text" name="text" class="search" placeholder="Search here!">
+      <input type="submit" name="submit" class="submit" value="Search">
+    </form> -->
+
+
+  <!-- </div>
+</nav> -->
+  <!-- End Navbar -->
+  {% block content %}
+  {% endblock %}
+
+</body>
+
+</html>
